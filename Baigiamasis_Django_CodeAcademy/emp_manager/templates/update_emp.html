@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Atnaujinti darbuotojo informaciją</h2>
+<form method="POST">
+  {% csrf_token %}
+  <input type="hidden" name="emp_id" value="{{ emp.id }}">
+  <label for="first_name">Vardas:</label><br>
+  <input type="text" id="first_name" name="first_name" value="{{ emp.first_name }}"><br>
+
+  <label for="last_name">Pavardė:</label><br>
+  <input type="text" id="last_name" name="last_name" value="{{ emp.last_name }}"><br>
+
+  <label for="phone">Telefonas:</label><br>
+  <input type="text" id="phone" name="phone" value="{{ emp.phone }}"><br>
+
+  <label for="role">Pareigos:</label><br>
+  <select name="role">
+    {% for role in roles %}
+      <option value="{{ role.id }}" {% if emp.role.id == role.id %}selected{% endif %}>{{ role.name }}</option>
+    {% endfor %}
+  </select>
+  <br>
+
+  <label for="email">El. paštas:</label><br>
+  <input type="text" id="email" name="email" value="{{ emp.email }}"><br><br>
+
+  <input type="submit" value="Atnaujinti">
+</form>
+{% endblock %}

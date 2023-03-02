@@ -1,0 +1,22 @@
+{% include 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1>Filtruoti Darbuotoją</h1>
+    <hr>
+    <form action="/filter_emp" method="post">
+      {% csrf_token %}
+      <label for="name">Darbuotojo Vardas/Pavardė</label><br>
+      <input type="text" id="name" name="name" value="{{ name }}"><br>
+      <label for="role">Pareigos</label><br>
+      <select id="role" name="role">
+        <option value="">Pasirinkite pareigas</option>
+        {% for role in roles %}
+          <option value="{{ role.name }}" {% if role.name == selected_role %}selected{% endif %}>{{ role.name }}</option>
+        {% endfor %}
+      </select><br>
+      <hr>
+      <button type="submit" class="btn btn-primary">Patvirtinti</button>
+    </form>
+  </div>
+{% endblock %}

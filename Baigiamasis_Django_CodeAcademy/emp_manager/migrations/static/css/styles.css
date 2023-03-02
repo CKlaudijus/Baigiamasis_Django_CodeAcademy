@@ -1,0 +1,11 @@
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.container_register{
+    min-width: 20rem;
+    height: 30rem;
+    margin: 2rem;
+}

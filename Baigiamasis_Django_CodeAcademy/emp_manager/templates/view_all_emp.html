@@ -1,0 +1,49 @@
+{% include 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visi Darbuotojai</title>
+
+</head>
+  <body>
+  <div class="container">
+          <h1>Darbuotojai</h1>
+      <hr>
+     <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Vardas</th>
+      <th scope="col">Pavardė</th>
+      <th scope="col">Telefono Numeris</th>
+      <th scope="col">Pareigos</th>
+      <th scope="col">Įdarbinimo data</th>
+      <th scope="col">El. paštas</th>
+      <th scope="col">Veiksmai</th>
+    </tr>
+  </thead>
+         {% for emp in emps %}
+  <tbody>
+    <tr>
+      <th scope="row">{{emp.id}}</th>
+      <td>{{emp.first_name}}</td>
+      <td>{{emp.last_name}}</td>
+      <td>{{emp.phone}}</td>
+      <td>{{emp.role.name}}</td>
+      <td>{{emp.hire_date}}</td>
+      <td>{{emp.email}}</td>
+      <td>
+          <a href="{% url 'update_emp' emp.id %}" class="btn btn-primary">Redaguoti</a>
+      </td>
+    </tr>
+  </tbody>
+         {% endfor %}
+</table>
+
+  </div>
+
+
+  </body>
+</html>
